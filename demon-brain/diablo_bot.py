@@ -166,9 +166,6 @@ async def terminal(ctx):
     private_channel.append(channel)
 
 
-
-
-
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.MissingRequiredArgument):

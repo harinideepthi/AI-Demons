@@ -1,7 +1,6 @@
 from functions import *
 from classes  import *
 import json
-from simulation_classes import *
 from math import dist
 
 

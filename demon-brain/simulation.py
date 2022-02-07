@@ -5,7 +5,6 @@ try:
     from classes import *
     from functions import *
     from character import *
-    from simulation_classes import *
     from demon import *
     import numpy as np
     import cmath

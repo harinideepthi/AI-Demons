@@ -1,3 +1,4 @@
+#defining character traits
 from classes import driver
 
 

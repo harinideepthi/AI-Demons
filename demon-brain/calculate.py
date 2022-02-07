@@ -1,3 +1,6 @@
+#not needed anymore :)
+#calculating values from string
+
 class node:
     def __init__(self, data, pair, operation):
         self.data = data

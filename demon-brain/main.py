@@ -1,4 +1,1 @@
-from terminal import *
-
-
-terminal()
+#main not configured yet

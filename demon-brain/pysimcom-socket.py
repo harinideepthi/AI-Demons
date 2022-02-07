@@ -1,3 +1,4 @@
+#enables communication between c# and python... for sending information to rerender
 import socket
 import time
 

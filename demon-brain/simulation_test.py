@@ -1,3 +1,4 @@
+#notneeded any more.... blender simulation stuff
 import bpy
 import sys
 import time

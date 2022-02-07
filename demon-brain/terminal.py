@@ -56,17 +56,3 @@ def terminal():
           final_decision = make_dec(decisions)
           print(final_decision.sentence)
           final_decision.driver_state.print()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
