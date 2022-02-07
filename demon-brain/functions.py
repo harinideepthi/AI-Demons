@@ -18,7 +18,7 @@ def derites(driver,value):
 
 #action extractor function returns action class from the name of the action
 def action_extractor(aan):
-    with open('C:\\Users\\akash\\PycharmProjects\\ai\\jsonFiles\\action_dict.json') as f:
+    with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\action_dict.json') as f:
         data = json.load(f)
         act = action(data[aan]["tag_matrix"],matrix_to_ds(data[aan]["driver_state"]),matrix_to_ds(data[aan]["obs_pm"]),aan,data[aan]["mi_list"])
 
@@ -26,7 +26,7 @@ def action_extractor(aan):
 
 #obj extractor function return object class from the name fo the object
 def object_extractor(word):
-    with open("C:\\Users\\akash\\PycharmProjects\\ai\\jsonFiles\\object_dict.json") as f:
+    with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\object_dict.json") as f:
         data = json.load(f)
         property_driver=[]
         value_driver = driver_state(data[word]["driver"][0], data[word]["driver"][1], data[word]["driver"][2],
@@ -85,7 +85,7 @@ def object_obj(aon):
         describer[i] = describer[i].replace(" ", '')
     if len(describer) > 1:
         describer = describer[1].split(sep= ',')
-        with open('C:\\Users\\akash\\PycharmProjects\\ai\\jsonFiles\\describer.json') as f:
+        with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\describer.json') as f:
             data = json.load(f)
             for i in range(len(describer)):
                 tags_.append(data[int(describer[i])])
@@ -162,7 +162,7 @@ def make_dec(dec):
 def store(o,d=None,p=None,a=None):
 
   #opening the json file
-  with open('C:\\Users\\akash\\PycharmProjects\\ai\\jsonFiles\\memory_asi.json') as f:
+  with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\memory_asi.json') as f:
         m = json.load(f)
   #doin shit
   try:
@@ -223,7 +223,7 @@ def store(o,d=None,p=None,a=None):
                   m[a][o]["property"][p] = [time.time()]
 
   #storing back
-  with open('C:\\Users\\akash\\PycharmProjects\\ai\\jsonFiles\\memory_asi.json', 'w') as j:
+  with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\memory_asi.json', 'w') as j:
       json.dump(m, j, indent=4)
 
 
@@ -251,15 +251,15 @@ def chunk_classifier(pos):
 
 #this fuking function deletes the sim object from the world data
 def delete(simobj):
-    with open("C:\\Users\\akash\\PycharmProjects\\ai\\jsonFiles\\worldData.json") as f:
+    with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\worldData.json") as f:
         wdata = json.load(f)
         wdata[simobj.chunk_no].pop(simobj.chunk_index)
-    with open("C:\\Users\\akash\\PycharmProjects\\ai\\jsonFiles\\worldData.json","w") as j:
+    with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\worldData.json","w") as j:
         json.dump(wdata,j)
 
 def tlo(o,d=None,p=None,a=None,tloThres=40000012):
     ct = time.time()
-    with open("C:\\Users\\akash\\PycharmProjects\\ai\\jsonFiles\\memory_asi.json") as f:
+    with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\memory_asi.json") as f:
         mdata = json.load(f)
         tlodat=[]
         tlodat.append(mdata["kaerve"][o]['self'])
@@ -281,7 +281,7 @@ def tlo(o,d=None,p=None,a=None,tloThres=40000012):
     print(abtT)
 
 def perform(a,o=None):
-    with open("C:\\Users\\akash\\PycharmProjects\\ai\\jsonFiles\\pinstrunctions.json") as f :
+    with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\pinstrunctions.json") as f :
         pins=json.load(f)
         pinstruction = pins[a]
         print(pinstruction)

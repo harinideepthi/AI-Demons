@@ -50,9 +50,8 @@ class formula:
         print(f'formula: {self.formula}')
     def calculate(self,to_find):
         print('tofind')
-        temp = split_operators(self.formula)
+
         print('fdkj')
-        print(temp)
 
 def find_roots(x,y):
     s = np.abs(np.diff(np.sign(y))).astype(bool)
