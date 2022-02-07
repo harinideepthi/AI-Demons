@@ -1,0 +1,110 @@
+{
+    "": {
+    "driver": [0.5,0.5,0,0,7,0,0],
+    "properties" : [],
+    "tags": ["none"],
+    "meaning": "",
+    "mi_list": []
+  },
+
+  "palard": {
+    "driver": [3.02,0,0,0,0,0,0],
+    "properties": [[0.2,[1.21,0,0,0,0,0,0],"size"]],
+    "tags": ["none"],
+    "meaning": "lizard, reptile,monster",
+    "mi_list": []
+  },
+  "saod": {
+    "driver": [0,0.5,0,0,50,0,0],
+    "properties" : [],
+    "tags": ["food"],
+    "meaning": "food,drinks",
+    "mi_list": []
+  },
+
+  "kalock": {
+    "driver": [0.5,0.5,0,0,0,0,0],
+    "properties" : [[0.2,[1.21,0,0,0,0,0,0],"size"],[3,[2.15,0,0,0,0,0,0],"hardness"]],
+    "tags": ["projectile"],
+    "meaning": "rock,stone,mineral",
+    "mi_list": []
+  },
+
+    "thalad": {
+    "driver": [0,0,0,0,20,0,0],
+    "properties" : [],
+    "tags": ["organ","human"],
+    "meaning": "head, mind, main, lead, control",
+    "mi_list": []
+  },
+    "ninan": {
+    "driver": [55.3,0.5,0,0,7,0,0],
+    "properties" : [],
+    "tags": [],
+    "meaning": "human,someone,person",
+    "mi_list": []
+    },
+    "meis": {
+    "driver": [10.56,0.5,0,0,7,0,0],
+    "properties" : [[0.5,[3.21,0,0,0,0,0,0],"size"]],
+    "tags": [],
+    "meaning": "sea creature",
+    "mi_list": []
+    },
+    "idart": {
+    "driver": [0,0,0,0,20,0,0],
+    "properties" : [],
+    "tags": [],
+    "meaning": "heart",
+    "mi_list": []
+    },
+    "kaind": {
+    "driver": [0,0.5,0,0,7,0,0],
+    "properties" : [],
+    "tags": [],
+    "meaning": "leg,hand,limb",
+    "mi_list": []
+    },
+    "ilarbs": {
+    "driver": [0.5,0.5,0,0,30,0,0],
+    "properties" : [],
+    "tags": ["medicinal","nature"],
+    "meaning": "",
+    "mi_list": []
+    },
+    "kaitis": {
+    "driver": [0.5,0.5,0,0,20,0,0],
+    "properties" : [],
+    "tags": ["food","nature"],
+    "meaning": "",
+    "mi_list": []
+    },
+    "thain": {
+    "driver": [0.5,0.5,0,0,7,0,0],
+    "properties" : [],
+    "tags": [],
+    "meaning": "something that represents inside or outside",
+    "mi_list": []
+    },
+    "kaert": {
+    "driver": [2.5,8,0,0,7,0,0],
+    "properties" : [],
+    "tags": ["none"],
+    "meaning": "market, store",
+    "mi_list": []
+    },
+    "porect": {
+    "driver": [0.5,0.5,0,0,0,0,0],
+    "properties" : [],
+    "tags": ["none"],
+    "meaning": "object, something,thing",
+    "mi_list": []
+    },
+    "saund": {
+    "driver": [0.5,0.5,0,0,7,0,0],
+    "properties" : [[70,[0.081,0,0,0,0,0,0],"decibals"]],
+    "tags": ["none"],
+    "meaning": "noise,sound",
+    "mi_list": []
+    }
+}
