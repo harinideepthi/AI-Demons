@@ -92,6 +92,9 @@ def tag_match(act,obj):
 
 #dtm - driver tag match list
 def act_driver_state(dtm):
+
+
+
     asd=[0,0,0,0,0,0,0]
     for i in range (len(dtm)):
        for j in range(5):
