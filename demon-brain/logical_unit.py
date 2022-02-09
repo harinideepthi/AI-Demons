@@ -36,30 +36,30 @@ class formula:
 
 def find_roots(x,y):
     s = np.abs(np.diff(np.sign(y))).astype(bool)
-    print(s)
     return x[:-1][s] + np.diff(x)[s]/(np.abs(y[1:][s]/y[:-1][s])+1)
 
 def generate(signal,variable,lower_limit,upper_limit,sampling_rate=10):
     x = np.linspace(lower_limit,upper_limit, (upper_limit - lower_limit) *sampling_rate)
     #print(x)
-    y  = []
-    yr = []
-
-    signal = signal.replace(variable,'z')
+    y = []
     for i in x:
-        for j in x:
-            temp = eval(signal)
-            y.append(temp)
-            yr.append(temp.real)
-            yi.append(temp.imag)
-    return x,np.array(yr),np.array(yi)
+        temp = eval(signal)
+        y.append(temp)
+    return x,np.array(y)
 
-requirement = ['force','mass','acceleration']
-inpu = {'mass': 12, 'accelaration': 0.5}
-form = 'force-mass*accelaration'
-tlo = formula(requirement,inpu,form)
+if __name__ == '__main__':
+    requirement = ['force','mass','acceleration']
+    inpu = {'mass': 12, 'accelaration': 0.5}
+    form = 'force-mass*accelaration'
+    tlo = formula(requirement,inpu,form)
 
-x,yr,yi = generate('x**2-2*x+4','x',-20,20,10)
-print(yi)
 
-plt.show()
+    x,y = generate('x**2-2*x+4','x',-20,20,10)
+    print(x,y)
+    #print(y)
+    z = find_roots(x,y)
+    plt.show(x,y)
+    plt.show()
+
+
+    find_roots(x,y)
