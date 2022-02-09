@@ -7,7 +7,19 @@ import time
 import random
 
 #derites function driver is a variable defined is character py.... don't forget imp things dumbass
+
 def derites(driver,value):
+
+  """
+
+    description: converts driver values into derites using their corresponding pdex values
+    parameter: driver(class: drive), value(int)
+    returns: pdex*value
+    driver: choose which driver the value belongs to
+    value: given a value to convert into derites
+
+  """
+
   if value<=driver.le:
     pdex=driver.pi1
   if value>driver.le and value<driver.ue :
@@ -18,6 +30,15 @@ def derites(driver,value):
 
 #action extractor function returns action class from the name of the action
 def action_extractor(aan):
+    """
+
+    description: converts a string into its corresponding action class.
+    parameter: aan (string)
+    returns: action object
+
+    """
+
+
     with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\action_dict.json') as f:
         data = json.load(f)
         act = action(data[aan]["tag_matrix"],matrix_to_ds(data[aan]["driver_state"]),matrix_to_ds(data[aan]["obs_pm"]),aan,data[aan]["mi_list"])
@@ -26,6 +47,13 @@ def action_extractor(aan):
 
 #obj extractor function return object class from the name fo the object
 def object_extractor(word):
+    """
+
+     description: converts a string into its corresponding object class.
+     parameter: word (string)
+     returns: object object
+
+     """
     with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\object_dict.json") as f:
         data = json.load(f)
         property_driver=[]
@@ -48,6 +76,13 @@ def object_extractor(word):
 
 #function which checks wt are the tags which matches b/w an act and obj ... input takes the class rather than the name
 def tag_match(act,obj):
+    """
+
+     description: checks what are the tags which matchches between and action and object
+     parameter: act(actions class ), obj(objects class)
+     returns: A list of matched tags
+
+     """
     bla = []
     for i in range(len(obj.tag)):
         for j in range(len(act.tag)):
