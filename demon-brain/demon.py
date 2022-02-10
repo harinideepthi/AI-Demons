@@ -19,7 +19,7 @@ class Position:
         final = [a, b, c, d]
         loaded_objects=[]
         for i in final:
-            loaded_chunks.append(chunk_classifier(i))
+            loaded_chunks.append(chunkClassifier(i))
         with open('C:\\Users\\akash\\PycharmProjects\\ai\\jsonFiles\\worldData.json') as f:
             data = json.load(f)
             for i in loaded_chunks:
@@ -27,7 +27,7 @@ class Position:
                 try:
 
                     for j in range(len(data[i])):
-                        temp_obj =object_obj(data[i][j][0])
+                        temp_obj =objectCombine(data[i][j][0])
                         temp_obj.name=data[i][j][0]
                         temp_obj = SimObject(temp_obj,data[i][j][1],data[i][j][2],i,j)
                         loaded_objects.append(temp_obj)

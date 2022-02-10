@@ -117,7 +117,7 @@ async def object(ctx,*,arg):
 
 @client.command(name='action',help= 'syntax: ?action [action name] [object name]')
 async def action(ctx,arg1,arg2):
-    driver = action_ds(arg1, arg2)
+    driver = actionDs(arg1, arg2)
     await ctx.message.channel.send(driver.aki)
     await ctx.message.channel.send(driver.asi)
     await ctx.message.channel.send(driver.lsi)
@@ -126,7 +126,7 @@ async def action(ctx,arg1,arg2):
 
 @client.command(name='dn' ,help= 'syntax: ?action [action name] [object name] ')
 async def dn(ctx,arg1,arg2):
-    dec_ds = add_driver_state([object_ds(arg2), action_ds(arg1, arg2)])
+    dec_ds = addDriverState([object_ds(arg2), actionDs(arg1, arg2)])
     decisions.append(decision(dec_ds, arg1 + ' ' + arg2, 0))
 @client.command(name='print_dn',help='prints the decisions')
 async def print_dn(ctx):
@@ -135,7 +135,7 @@ async def print_dn(ctx):
 
 @client.command(name='mkdn',help = 'makes decision ')
 async def mkdn(ctx):
-    final_decision = make_dec(decisions)
+    final_decision = makeDec(decisions)
     await ctx.message.channel.send(final_decision.sentence)
 
 @client.command(name='delete_dn_all',help='deletes all the decisions')

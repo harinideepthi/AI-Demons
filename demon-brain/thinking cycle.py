@@ -24,9 +24,9 @@ while Flag_k:
             data = json.load(f)
             bla.append(data[0][random.randint(0,len(data[0])-1)])
         for i in range(len(bla)):
-            od.append(decision(action_ds("kaerve",bla[i]),"kaerve"+" "+bla[i],0))
+            od.append(decision(actionDs("kaerve", bla[i]), "kaerve" + " " + bla[i], 0))
 
-    final_od = make_dec(od)
+    final_od = makeDec(od)
     final_obj = final_od.sentence.split(sep= " ")[-1]
 
 
@@ -38,8 +38,8 @@ while Flag_k:
             data = json.load(f)
             alb.append(data[1][random.randint(0, len(data[1]) - 1)])
         for i in range(len(alb)):
-            do.append(decision(action_ds(alb[i],final_obj),alb[i]+' '+final_obj,0))
+            do.append(decision(actionDs(alb[i], final_obj), alb[i] + ' ' + final_obj, 0))
 
-    final_dec = make_dec(do)
+    final_dec = makeDec(do)
     print(final_dec.sentence)
     Flag_k = Flag_g

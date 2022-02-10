@@ -23,7 +23,7 @@ class driver:
         self.pi3 = pi3
 
 #driver state is the collection of all the fuking drivers
-class driver_state:
+class driverState:
     def __init__(self, aki, asi, lti, lsi, sto, ski,tlo):
         self.aki = aki
         self.asi = asi
@@ -59,7 +59,7 @@ class object:
         self.mi_list = mi_list
     #methon which converts the object into a driverstate
     def to_ds(self):
-        temp = driver_state(0, 0, 0, 0, 0, 0, 0)
+        temp = driverState(0, 0, 0, 0, 0, 0, 0)
         # calculating driver values for properties
         for i in range(len(self.property)):
             temp.aki = temp.aki + self.property[i].value * self.property[i].dm_matrix.aki

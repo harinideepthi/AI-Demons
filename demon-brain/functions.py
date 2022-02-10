@@ -29,7 +29,7 @@ def derites(driver,value):
   return pdex*value
 
 #action extractor function returns action class from the name of the action
-def action_extractor(aan):
+def actionExtractor(aan):
     """
 
     description: converts a string into its corresponding action class.
@@ -41,12 +41,12 @@ def action_extractor(aan):
 
     with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\action_dict.json') as f:
         data = json.load(f)
-        act = action(data[aan]["tag_matrix"],matrix_to_ds(data[aan]["driver_state"]),matrix_to_ds(data[aan]["obs_pm"]),aan,data[aan]["mi_list"])
+        act = action(data[aan]["tag_matrix"],matrixToDs(data[aan]["driverState"]),matrixToDs(data[aan]["obs_pm"]),aan,data[aan]["mi_list"])
 
     return act
 
 #obj extractor function return object class from the name fo the object
-def object_extractor(word):
+def objectExtractor(word):
     """
 
      description: converts a string into its corresponding object class.
@@ -56,26 +56,26 @@ def object_extractor(word):
      """
     with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\object_dict.json") as f:
         data = json.load(f)
-        property_driver=[]
-        value_driver = driver_state(data[word]["driver"][0], data[word]["driver"][1], data[word]["driver"][2],
-                                    data[word]["driver"][3], data[word]["driver"][4], data[word]["driver"][5], data[word]["driver"][6])
+        propertyDriver=[]
+        valueDriver = driverState(data[word]["driver"][0], data[word]["driver"][1], data[word]["driver"][2],
+                                  data[word]["driver"][3], data[word]["driver"][4], data[word]["driver"][5], data[word]["driver"][6])
         for i in range(len(data[word]["properties"])):
-            property_driver.append(property(data[word]["properties"][i][0],
-                                            driver_state(data[word]["properties"][i][1][0],
-                                                         data[word]["properties"][i][1][1],
-                                                         data[word]["properties"][i][1][2],
-                                                         data[word]["properties"][i][1][3],
-                                                         data[word]["properties"][i][1][4],
-                                                         data[word]["properties"][i][1][5],
-                                                         data[word]["properties"][i][1][6],
-                                                         ), data[word]["properties"][i][2]))
+            propertyDriver.append(property(data[word]["properties"][i][0],
+                                           driverState(data[word]["properties"][i][1][0],
+                                                       data[word]["properties"][i][1][1],
+                                                       data[word]["properties"][i][1][2],
+                                                       data[word]["properties"][i][1][3],
+                                                       data[word]["properties"][i][1][4],
+                                                       data[word]["properties"][i][1][5],
+                                                       data[word]["properties"][i][1][6],
+                                                       ), data[word]["properties"][i][2]))
         milist = data[word]["mi_list"]
         tags=data[word]["tags"]
-    return object(value_driver,property_driver,tags,word,mi_list=milist)
+    return object(valueDriver,propertyDriver,tags,word,mi_list=milist)
 
 
 #function which checks wt are the tags which matches b/w an act and obj ... input takes the class rather than the name
-def tag_match(act,obj):
+def tagMatch(act, obj):
     """
 
      description: checks what are the tags which matchches between and action and object
@@ -91,8 +91,14 @@ def tag_match(act,obj):
     return bla
 
 #dtm - driver tag match list
-def act_driver_state(dtm):
+def actDriverState(dtm):
+    """
 
+    description: converts action class into driver driver state class
+    parameters: dtm(list) , dtm - driver tag match list
+    returns: driver state
+
+    """
 
 
     asd=[0,0,0,0,0,0,0]
@@ -100,11 +106,18 @@ def act_driver_state(dtm):
        for j in range(5):
             asd[j]=asd[j]+dtm[i][j]
 
-    return driver_state(asd[0], asd[1], asd[2], asd[3], asd[4], asd[5], asd[6])
+    return driverState(asd[0], asd[1], asd[2], asd[3], asd[4], asd[5], asd[6])
 
 #converts the matrix to driver state class
-def matrix_to_ds(matrix):
-    ds = driver_state(0, 0, 0, 0, 0, 0, 0)
+def matrixToDs(matrix):
+    """
+
+    description: converts a list or matrix to driver state
+    parameters: matrix(list)
+    returns : ds(class: driver state)
+
+    """
+    ds = driverState(0, 0, 0, 0, 0, 0, 0)
     ds.aki = matrix[0]
     ds.asi = matrix[1]
     ds.lsi = matrix[2]
@@ -115,7 +128,13 @@ def matrix_to_ds(matrix):
     return ds
 
 #this does all the shit in object part combines the driverstate and properties and shit
-def object_obj(aon):
+def objectCombine(aon):
+    """
+    description: combines driver state, properties, describers(support function)
+    parameters: aon (string)
+    returns: obj(class: object), combined object
+
+    """
     describer = aon.split(sep="&desc:")
     aon = describer[0]
     tags_ = []
@@ -131,7 +150,7 @@ def object_obj(aon):
     aon = aon.split(sep="&prop:")
     for i in range(len(aon)):
         aon[i] = aon[i].replace(" ", '')
-    obj = object_extractor(aon[0])
+    obj = objectExtractor(aon[0])
     for j in range(len(tags_)):
         obj.tag.append(tags_[j])
 
@@ -142,14 +161,30 @@ def object_obj(aon):
     return obj
 
 #action ds function returns driiverstate of action and object
-def action_ds(act,obj):
-    driver_tag_match = tag_match(act, obj)
-    driver = add_driver_state([act_driver_state(driver_tag_match) , act.ds, object_preference(obj.to_ds(),act.ods_preference_matrix)])
+def actionDs(act, obj):
+
+    """
+
+    description: returns action and object's driverstate
+    parameters: act(class: action), obj(class: object)
+    returns: driver(class: driverState
+
+    """
+    driver_tag_match = tagMatch(act, obj)
+    driver = addDriverState([actDriverState(driver_tag_match) , act.ds, objectPreference(obj.to_ds(), act.ods_preference_matrix)])
     return driver
 
 #obj preference matrix idek wt this does... ohh yeah it multiplies the driverstate with preference matrix
-def object_preference(obds,obds_pm):
-    ahh = driver_state(0, 0, 0, 0, 0, 0, 0)
+def objectPreference(obds, obds_pm):
+
+    """
+    description: multiplies the driverState with preference matrix
+    paramters: obds(class: object), abds_pm(list)
+    returns: ahh (class: driverState)
+
+    """
+
+    ahh = driverState(0, 0, 0, 0, 0, 0, 0)
     ahh.aki = obds.aki * obds_pm.aki
     ahh.asi = obds.asi * obds_pm.asi
     ahh.lsi = obds.lsi * obds_pm.lsi
@@ -163,8 +198,8 @@ def object_preference(obds,obds_pm):
 ########################################################################################################################
 
 #function to add two driverstate
-def add_driver_state(a):
-    c = driver_state(0, 0, 0, 0, 0, 0, 0)
+def addDriverState(a):
+    c = driverState(0, 0, 0, 0, 0, 0, 0)
     for i in range(len(a)):
         c.aki = c.aki + a[i].aki
         c.asi = c.asi + a[i].asi
@@ -176,21 +211,21 @@ def add_driver_state(a):
     return c
 
 #this takes the decision and converts to drivers IG
-def derites_decision(decisionn):
-    akii = derites(aki, decisionn.driver_state.aki)
-    asii = derites(asi, decisionn.driver_state.asi)
-    lsii = derites(lsi, decisionn.driver_state.lsi)
-    ltii = derites(lti, decisionn.driver_state.lti)
-    stoo = derites(sto, decisionn.driver_state.sto)
-    stoo = derites(ski, decisionn.driver_state.ski)
-    stoo = derites(tlo, decisionn.driver_state.tlo)
+def deritesDecision(decisionn):
+    akii = derites(aki, decisionn.driverState.aki)
+    asii = derites(asi, decisionn.driverState.asi)
+    lsii = derites(lsi, decisionn.driverState.lsi)
+    ltii = derites(lti, decisionn.driverState.lti)
+    stoo = derites(sto, decisionn.driverState.sto)
+    stoo = derites(ski, decisionn.driverState.ski)
+    stoo = derites(tlo, decisionn.driverState.tlo)
     return (akii+asii+lsii+ltii+stoo)
 
 #yeah the final fuking function which returns final dec from decsion list
-def make_dec(dec):
+def makeDec(dec):
   decision_index=0
   for i in range(len(dec)):
-      dec[i].derites = derites_decision(dec[i])
+      dec[i].derites = deritesDecision(dec[i])
       if dec[i].derites>dec[decision_index].derites:
           decision_index = i
 
@@ -270,7 +305,7 @@ def clock(start_time):
     return timer
 
 
-def chunk_classifier(pos):
+def chunkClassifier(pos):
     x = int(pos.x)
     z = int(pos.z)
     h = 0

@@ -18,20 +18,20 @@ def terminal():
 
       if cmd in ['object','obj','o']:
             aon = input('input object here: ')
-            object_driver_state = object_extractor(aon).to_ds()
+            object_driver_state = objectExtractor(aon).to_ds()
             print(derites(aki,object_driver_state.aki))
 
 
       if cmd in ['action','act','a']:
             objj = input('enter the object: ')
             actt = input('input action here: ')
-            driver = action_ds(action_extractor(actt),object_extractor(objj))
+            driver = actionDs(action_extractor(actt), objectExtractor(objj))
             driver.print()
 
       if cmd in ['decision','dec']:
             ooo = input('enter the object: ')
             aaa = input('enter the action: ')
-            dec_ds = action_ds(action_extractor(aaa),  object_extractor(ooo) )
+            dec_ds = actionDs(action_extractor(aaa), objectExtractor(ooo))
             decisions.append(decision(dec_ds,aaa+' '+ooo,0))
 
       if cmd in ['print_decision','print_dn']:
@@ -53,6 +53,6 @@ def terminal():
           print('prints help')
 
       if cmd in ['make_decision', 'mkdn' ,'make_dn','mk_dn']:
-          final_decision = make_dec(decisions)
+          final_decision = makeDec(decisions)
           print(final_decision.sentence)
-          final_decision.driver_state.print()
+          final_decision.driverState.print()

@@ -24,11 +24,11 @@ def respond(demon,stimulus):
     print(stimulus.object)
     print(stimulus.subject)
     print(stimulus.verb)
-    driv=action_ds(stimulus.verb,stimulus.object)
+    driv=actionDs(stimulus.verb, stimulus.object)
     driv.print()
 Tsub= 'subject'
-Tobj=object_obj('palard')
-Tver=action_extractor('moku')
+Tobj=objectCombine('palard')
+Tver=actionExtractor('moku')
 stimuli=asn(subject=Tsub,object=Tobj,verb=Tver)
 respond(demon = diablo, stimulus=stimuli)
 
