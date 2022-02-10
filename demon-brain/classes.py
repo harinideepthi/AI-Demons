@@ -1,7 +1,7 @@
 #decision class
 class decision:
-    def __init__(self, driver_state,sentence ,derites):
-        self.driver_state = driver_state
+    def __init__(self, driverState, sentence, derites):
+        self.driverState = driverState
         self.sentence = sentence
         self.derites = derites
 

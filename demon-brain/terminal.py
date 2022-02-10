@@ -37,7 +37,7 @@ def terminal():
       if cmd in ['print_decision','print_dn']:
           for i in range(len(decisions)):
               print(decisions[i].sentence)
-              decisions[i].driver_state.print()
+              decisions[i].driverState.print()
 
       if cmd in ['pop_decision','pop_dn']:
           decisions.pop()

@@ -199,6 +199,13 @@ def objectPreference(obds, obds_pm):
 
 #function to add two driverstate
 def addDriverState(a):
+    """
+
+    description : adds two or more driver state
+    parameters: a(list) list of class: driverState
+    returns c(class: driverState)
+
+    """
     c = driverState(0, 0, 0, 0, 0, 0, 0)
     for i in range(len(a)):
         c.aki = c.aki + a[i].aki
@@ -212,6 +219,14 @@ def addDriverState(a):
 
 #this takes the decision and converts to drivers IG
 def deritesDecision(decisionn):
+
+    """
+
+    descripton: adds all the derites of a class: decision
+    paramters: decision (class: decision)
+    returns: derites(int)
+
+    """
     akii = derites(aki, decisionn.driverState.aki)
     asii = derites(asi, decisionn.driverState.asi)
     lsii = derites(lsi, decisionn.driverState.lsi)
@@ -223,6 +238,14 @@ def deritesDecision(decisionn):
 
 #yeah the final fuking function which returns final dec from decsion list
 def makeDec(dec):
+
+  """
+
+  description: makes decision from list of decisions
+  parameters: dec(list). list of decisions
+  reuturns: final decision (class: decision)
+
+   """
   decision_index=0
   for i in range(len(dec)):
       dec[i].derites = deritesDecision(dec[i])
@@ -234,6 +257,13 @@ def makeDec(dec):
 
 def store(o,d=None,p=None,a=None):
 
+  """
+
+  description: stores a decision(splitup) into memory file
+  parameters: o (str), d =None,p=None,a=None (object,describer, property, action)
+  returns: None
+
+  """
   #opening the json file
   with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\memory_asi.json') as f:
         m = json.load(f)
@@ -301,11 +331,28 @@ def store(o,d=None,p=None,a=None):
 
 
 def clock(start_time):
+    """
+
+    description: calculates time passed from start time to current time
+    parameters: start_time
+    returns: time
+
+    """
     timer = time.time()- start_time
     return timer
 
 
 def chunkClassifier(pos):
+
+    """
+
+    description: returns which chunk a particular position belongs to
+    parameters: pos(class: posistion)
+    reuturns: chunk(int)
+
+    """
+
+
     x = int(pos.x)
     z = int(pos.z)
     h = 0
@@ -324,6 +371,15 @@ def chunkClassifier(pos):
 
 #this fuking function deletes the sim object from the world data
 def delete(simobj):
+
+    """
+
+    description: deletes a simulation object from the simulation world file
+    parameters: simobj(class: simObj)
+    reuturns: None
+
+    """
+
     with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\worldData.json") as f:
         wdata = json.load(f)
         wdata[simobj.chunk_no].pop(simobj.chunk_index)
@@ -331,6 +387,13 @@ def delete(simobj):
         json.dump(wdata,j)
 
 def tlo(o,d=None,p=None,a=None,tloThres=40000012):
+
+    """
+
+    description: idk man
+
+    """
+
     ct = time.time()
     with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\memory_asi.json") as f:
         mdata = json.load(f)
