@@ -417,6 +417,15 @@ def tlo(o,d=None,p=None,a=None,tloThres=40000012):
     print(abtT)
 
 def perform(a,o=None):
+
+    """
+
+    description: performs the decision with the generated pinstruction by the decision
+    parameters: a, o=None
+    pinstruction:
+        0th bit: delete pin
+
+    """
     with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\pinstrunctions.json") as f :
         pins=json.load(f)
         pinstruction = pins[a]
@@ -428,6 +437,15 @@ def perform(a,o=None):
     pass
 
 def excecute(input,instruction=None):
+
+    """
+
+    description: excecutes a task with a given instruciton
+    parameters: input, instruction = None
+    reuturns: output
+
+    """
+
     instruction = instruction.replace(' ','')
     instruction = instruction.split('&i:')
     flagi=True
