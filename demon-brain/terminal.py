@@ -18,8 +18,8 @@ def terminal():
 
       if cmd in ['object','obj','o']:
             aon = input('input object here: ')
-            object_driver_state = objectExtractor(aon).to_ds()
-            print(derites(aki,object_driver_state.aki))
+            objectDriverState = objectExtractor(aon).to_ds()
+            print(derites(aki,objectDriverState.aki))
 
 
       if cmd in ['action','act','a']:
