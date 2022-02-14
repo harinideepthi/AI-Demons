@@ -8,8 +8,6 @@ except Exception as e:
     print(e)
 
 
-
-
 class arb:
     """
 
@@ -35,3 +33,10 @@ def arb_str(aki):
 
     if str(type(aki)) == "<class 'str'>":
         return str(aki)
+
+def str_arb(asi):
+    print(asi)
+
+
+
+
