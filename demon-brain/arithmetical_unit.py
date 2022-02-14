@@ -15,6 +15,14 @@ except Exception as e:
     print(f'error importing : {e} ')
 
 class unit:
+
+    """
+
+    description: class: used to denote a value with a unit
+    parameter: value, unit
+
+    """
+
     def __init__(self,value,unit):
         self.value = value
         self.unit = unit
