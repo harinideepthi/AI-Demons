@@ -38,9 +38,58 @@ def arb_str(aki):
 
 
 def store_arb(data):
+
+    if str(type(data)) =="<class 'str'>":
+        aki = str_arb(data)
+        str_data = data
+        a = aki.a
+        r = aki.r
+        b = aki.b
+
+        asi = aki
+        asi.a, asi.b = asi.b, asi.a
+        asi.r = '~' + asi.r
+        inv_str_data = arb_str(asi)
+    elif "<class '__main__.arb'>":
+        aki = data
+        str_data = arb_str(data)
+        a = aki.a
+        r = aki.r
+        b = aki.b
+
+        asi = aki
+        asi.a, asi.b = asi.b, asi.a
+        asi.r = '~' + asi.r
+        inv_str_data = arb_str(asi)
+
+
+
+
     with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json") as f:
+
+
         arb_data = json.load(f)
-        arb_data.append(data)
+        #storing relations
+        try:
+            arb_data["relation"][arb_str(r)].append(str_data)
+        except:
+            arb_data["relation"][arb_str(r)] = [str_data]
+
+        #storing a
+        try:
+            arb_data["subject"][arb_str(a)].append(str_data)
+        except:
+            arb_data["subject"][arb_str(a)] = [str_data]
+
+        #storing b with inverse relation
+        try:
+
+            arb_data["subject"][arb_str(b)].append(inv_str_data)
+        except:
+            arb_data["subject"][arb_str(b)] = [inv_str_data]
+
+
+
     with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json",'w') as w:
         json.dump(arb_data,w)
 
@@ -50,7 +99,8 @@ def str_arb(asi):
     asi = asi.replace(' ','')
     asi = asi.replace('&a:', ' &a: ')
     asi = asi.replace('&r:', ' &r: ')
-    asi = asi.replace('&b:', ' &b: ')
+    asi = asi.replace('&b:', ' &b: '
+                      )
     asi = asi.split()
     if flag:
         return str_arb_sup(asi)
@@ -124,6 +174,8 @@ def communicate(sen):
 
 
 if __name__ == "__main__":
-    a = arb(arb('akash','love','saka'),'son','dio')
+    a = arb(arb('akash','love','saka'),'parent','dio')
     strr = arb_str(a)
+    b = arb('akash','love','void')
+    store_arb(b)
     v = str_arb(strr)
