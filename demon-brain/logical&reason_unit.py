@@ -107,7 +107,6 @@ def str_arb_sup(lsi):
     return mt
 
 
-
 def arr_str(arr):
     return ' '.join([str(elem) for elem in arr])
 
@@ -115,7 +114,13 @@ def arr_str(arr):
 def is_arb(str):
     return "&a:" in str and "&r:" in str and "&b:" in str
 
+def communicate(sen):
+    if  sen.startswith('&qn:'):
+         print("it's a qesution ")
 
+    if sen.startswith('&fact:'):
+        if is_arb(sen):
+            store_arb(sen)
 
 
 if __name__ == "__main__":
