@@ -61,7 +61,9 @@ def store_arb(data):
         asi.a, asi.b = asi.b, asi.a
         asi.r = '~' + asi.r
         inv_str_data = arb_str(asi)
-
+        ia = asi.a
+        ir = asi.r
+        ib = asi.b
 
 
 
@@ -69,26 +71,43 @@ def store_arb(data):
 
 
         arb_data = json.load(f)
-        #storing relations
-        try:
-            arb_data["relation"][arb_str(r)].append(str_data)
-        except:
-            arb_data["relation"][arb_str(r)] = [str_data]
-
         #storing a
         try:
-            arb_data["subject"][arb_str(a)].append(str_data)
+            arb_data["a"][arb_str(a)].append(str_data)
         except:
-            arb_data["subject"][arb_str(a)] = [str_data]
+            arb_data["a"][arb_str(a)] = [str_data]
 
-        #storing b with inverse relation
+        #storing r
         try:
-
-            arb_data["subject"][arb_str(b)].append(inv_str_data)
+            arb_data["r"][arb_str(r)].append(str_data)
         except:
-            arb_data["subject"][arb_str(b)] = [inv_str_data]
+            arb_data["r"][arb_str(r)] = [str_data]
 
+        #storing b
+        try:
+            arb_data["b"][arb_str(b)].append(str_data)
+        except:
+            arb_data["b"][arb_str(b)] = [str_data]
 
+        #inverse relations
+        #storing ia
+
+        try:
+            arb_data["a"][arb_str(ia)].append(inv_str_data)
+        except:
+            arb_data["a"][arb_str(ia)] = [inv_str_data]
+
+        #storing r
+        try:
+            arb_data["r"][arb_str(ir)].append(inv_str_data)
+        except:
+            arb_data["r"][arb_str(ir)] = [inv_str_data]
+
+        #storing b
+        try:
+            arb_data["b"][arb_str(ib)].append(inv_str_data)
+        except:
+            arb_data["b"][arb_str(ib)] = [inv_str_data]
 
     with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json",'w') as w:
         json.dump(arb_data,w)
@@ -171,6 +190,17 @@ def communicate(sen):
     if sen.startswith('&fact:'):
         if is_arb(sen):
             store_arb(sen)
+
+def retrive(a,r,b):
+    with open("C:\\Users\\akash\\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json") as f:
+        data = json.load(f)
+        #a
+        if a == "_":
+            temp = data["subject"]
+        else:
+            temp = data["subject"][a]
+        print(temp)
+
 
 
 if __name__ == "__main__":
