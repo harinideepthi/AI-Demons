@@ -64,7 +64,13 @@ def store_arb(data):
         ia = asi.a
         ir = asi.r
         ib = asi.b
-
+        #print(a)
+        if is_arb(a):
+            #print(a)
+            store_arb(a)
+        if is_arb(b):
+            #print(b)
+            store_arb(b)
 
 
     with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json") as f:
@@ -180,8 +186,11 @@ def arr_str(arr):
     return ' '.join([str(elem) for elem in arr])
 
 
-def is_arb(str):
-    return "&a:" in str and "&r:" in str and "&b:" in str
+def is_arb(aki):
+    if str(type(aki)) == "<class '__main__.arb'>":
+        return True
+    else:
+        return "&a:" in aki and "&r:" in aki and "&b:" in aki
 
 def communicate(sen):
     if  sen.startswith('&qn:'):
@@ -214,19 +223,24 @@ def retrive(a="_",r="_",b="_"):
         rl = retrive_sup(rl)
         bl = retrive_sup(bl)
 
-        print("al",al)
-        print("rl",rl)
-        print("bl",bl)
+        #print("al",al)
+        #print("rl",rl)
+        #print("bl",bl)
         intersection_set = set.intersection(set(al), set(rl),set(bl))
         final_list = list(intersection_set)
         print(final_list)
-
+        return final_list
+def memArbClear():
+    cdata = {"a": {}, "r": {}, "b": {}}
+    with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json",'w') as w:
+        json.dump(cdata,w)
 
 def retrive_sup(aki):
     if str(type(aki))=="<class 'list'>":
         return aki
 
     else:
+        aki = list(aki.values())
         asi = []
         for i in range(len(aki)):
             asi += aki[i]
@@ -239,3 +253,4 @@ if __name__ == "__main__":
     b = arb('akash','love','void')
     store_arb(b)
     v = str_arb(strr)
+    retrive(a = "akash",r = "love")
