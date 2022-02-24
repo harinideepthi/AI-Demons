@@ -191,16 +191,46 @@ def communicate(sen):
         if is_arb(sen):
             store_arb(sen)
 
-def retrive(a,r,b):
+def retrive(a="_",r="_",b="_"):
     with open("C:\\Users\\akash\\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json") as f:
         data = json.load(f)
         #a
         if a == "_":
-            temp = data["subject"]
+            al = data["a"]
         else:
-            temp = data["subject"][a]
-        print(temp)
+            al = data["a"][a]
 
+        if r == "_":
+            rl = data["r"]
+        else:
+            rl = data["r"][r]
+
+        if b == "_":
+            bl = data["b"]
+        else:
+            bl = data["b"][b]
+
+        al = retrive_sup(al)
+        rl = retrive_sup(rl)
+        bl = retrive_sup(bl)
+
+        print("al",al)
+        print("rl",rl)
+        print("bl",bl)
+        intersection_set = set.intersection(set(al), set(rl),set(bl))
+        final_list = list(intersection_set)
+        print(final_list)
+
+
+def retrive_sup(aki):
+    if str(type(aki))=="<class 'list'>":
+        return aki
+
+    else:
+        asi = []
+        for i in range(len(aki)):
+            asi += aki[i]
+        return asi
 
 
 if __name__ == "__main__":
