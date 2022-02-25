@@ -246,7 +246,6 @@ def retrive_sup(aki):
             asi += aki[i]
         return asi
 
-
 if __name__ == "__main__":
     a = arb(arb('akash','love','saka'),'parent','dio')
     strr = arb_str(a)
@@ -254,3 +253,4 @@ if __name__ == "__main__":
     store_arb(b)
     v = str_arb(strr)
     retrive(a = "akash",r = "love")
+
