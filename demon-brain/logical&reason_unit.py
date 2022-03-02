@@ -45,10 +45,12 @@ def store_arb(data):
         a = aki.a
         r = aki.r
         b = aki.b
-
         asi = aki
         asi.a, asi.b = asi.b, asi.a
         asi.r = '~' + asi.r
+        ia = asi.a
+        ir = asi.r
+        ib = asi.b
         inv_str_data = arb_str(asi)
     elif "<class '__main__.arb'>":
         aki = data
@@ -97,7 +99,7 @@ def store_arb(data):
 
         #inverse relations
         #storing ia
-
+        #print(ia,ir,ib)
         try:
             arb_data["a"][arb_str(ia)].append(inv_str_data)
         except:
@@ -194,9 +196,18 @@ def is_arb(aki):
 
 def communicate(sen):
     if  sen.startswith('&qn:'):
-         print("it's a qesution ")
-
+        nen = sen
+        nen = nen.replace('&qn:','')
+        nen = nen.replace(' ','')
+        nen = nen.replace('&a:',' ')
+        nen = nen.replace('&r:', ' ')
+        nen = nen.replace('&b:', ' ')
+        nen = nen.split()
+        data = retrive(*nen)
+        print(data)
     if sen.startswith('&fact:'):
+        sen = sen.replace(' ','')
+        sen = sen.replace('&fact:','')
         if is_arb(sen):
             store_arb(sen)
 
@@ -230,6 +241,7 @@ def retrive(a="_",r="_",b="_"):
         final_list = list(intersection_set)
         print(final_list)
         return final_list
+
 def memArbClear():
     cdata = {"a": {}, "r": {}, "b": {}}
     with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json",'w') as w:
