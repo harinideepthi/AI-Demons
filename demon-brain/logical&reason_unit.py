@@ -204,12 +204,22 @@ def communicate(sen):
         nen = nen.replace('&b:', ' ')
         nen = nen.split()
         data = retrive(*nen)
-        print(data)
+        arbDisplay(data)
     if sen.startswith('&fact:'):
         sen = sen.replace(' ','')
         sen = sen.replace('&fact:','')
         if is_arb(sen):
             store_arb(sen)
+
+def arbDisplay(arr):
+    for _,item in enumerate(arr):
+        item = item.replace(' ' ,'')
+        item = item.replace('&a:', ' ')
+        item = item.replace('&r:', ' ' )
+        item = item.replace('&b:', ' ')
+        print(item)
+
+
 
 def retrive(a="_",r="_",b="_"):
     with open("C:\\Users\\akash\\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json") as f:
@@ -239,7 +249,7 @@ def retrive(a="_",r="_",b="_"):
         #print("bl",bl)
         intersection_set = set.intersection(set(al), set(rl),set(bl))
         final_list = list(intersection_set)
-        print(final_list)
+        #print(final_list)
         return final_list
 
 def memArbClear():
@@ -257,6 +267,18 @@ def retrive_sup(aki):
         for i in range(len(aki)):
             asi += aki[i]
         return asi
+
+def cTerminal():
+    flagcli = True
+    while flagcli:
+        cmd = str(input ('>>>'))
+        if cmd in ['quit','exit','q','e']:
+            flagcli = False
+        else:
+            communicate(cmd)
+
+
+
 
 if __name__ == "__main__":
     a = arb(arb('akash','love','saka'),'parent','dio')
