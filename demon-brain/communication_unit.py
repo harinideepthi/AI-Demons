@@ -1,5 +1,5 @@
 from functions import *
-from arithmetical_unit import *
+from ARU import *
 
 def communicate(word , confidence, trust):
      print(word)

@@ -1,5 +1,5 @@
 try:
-    from arithmetical_unit import unit
+    from ARU import unit
     from functions import *
     from classes import *
     import json
