@@ -254,7 +254,7 @@ def retrive(a="_",r="_",b="_"):
 
 def memArbClear():
     cdata = {"a": {}, "r": {}, "b": {}}
-    with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json",'w') as w:
+    with open("demon-brain/jsonFiles/memory_arb.json",'w') as w:
         json.dump(cdata,w)
 
 def retrive_sup(aki):
@@ -278,12 +278,21 @@ def cTerminal():
             communicate(cmd)
 
 
-def DefineRelation():
+def DefineRelation(relation, sen):
     """
 
     description: defines a relation making it easier to retrive information from a sentence
 
     """
+    with open('demon-brain/jsonFiles/mem_rdef.json') as f:
+        data = json.read(f)
+
+
+
+
+
+
+
 if __name__ == "__main__":
     a = arb(arb('akash','love','saka'),'parent','dio')
     strr = arb_str(a)
