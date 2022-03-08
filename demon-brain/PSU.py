@@ -5,6 +5,9 @@ def solve(qn):
 
     pass
 
+
+
+
 def InfoTranslate(sen):
     """
 

@@ -278,8 +278,12 @@ def cTerminal():
             communicate(cmd)
 
 
+def DefineRelation():
+    """
 
+    description: defines a relation making it easier to retrive information from a sentence
 
+    """
 if __name__ == "__main__":
     a = arb(arb('akash','love','saka'),'parent','dio')
     strr = arb_str(a)
