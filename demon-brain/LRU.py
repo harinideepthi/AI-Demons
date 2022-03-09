@@ -254,7 +254,7 @@ def retrive(a="_",r="_",b="_"):
 
 def memArbClear():
     cdata = {"a": {}, "r": {}, "b": {}}
-    with open("demon-brain/jsonFiles/memory_arb.json",'w') as w:
+    with open("jsonFiles/memory_arb.json",'w') as w:
         json.dump(cdata,w)
 
 def retrive_sup(aki):
@@ -284,10 +284,14 @@ def DefineRelation(relation, sen):
     description: defines a relation making it easier to retrive information from a sentence
 
     """
-    with open('demon-brain/jsonFiles/mem_rdef.json') as f:
-        data = json.read(f)
-
-
+    with open('jsonFiles/mem_rdef.json') as f:
+        data = json.load(f)
+        try:
+            data["relation"][relation].append(sen)
+        except:
+            data["relation"][relation] = [sen]
+    with open('jsonFiles/mem_rdef.json','w') as w:
+        json.dump(data,w)
 
 
 
