@@ -309,7 +309,7 @@ def InfoTranslate(arb):
 
     with open('jsonFiles/mem_rdef.json') as f:
         data = json.load(f)
-    data = data [r]
+    data = data['relation'] [r]
     for i,item in enumerate(data):
         item = item.replace('#a',a)
         item = item.replace('#r',r)
