@@ -293,6 +293,29 @@ def DefineRelation(relation, sen):
     with open('jsonFiles/mem_rdef.json','w') as w:
         json.dump(data,w)
 
+def InfoTranslate(arb):
+    """
+
+    param: sen(str)
+    description: unravels a sentence and extracts all information possible/given and returns as a list of data
+    returns: data(list)
+
+    """
+    arb = str_arb(arb)
+    a = arb.a
+    r = arb.r
+    b = arb.b
+
+
+    with open('jsonFiles/mem_rdef.json') as f:
+        data = json.load(f)
+    data = data [r]
+    for i,item in enumerate(data):
+        item = item.replace('#a',a)
+        item = item.replace('#r',r)
+        data[i] = item.replace('#b',b)
+
+    return data
 
 
 
