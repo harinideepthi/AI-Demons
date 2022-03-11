@@ -21,7 +21,7 @@ class arb:
         self.b = b
 
     def print(self):
-        print(arb_str(self))
+        print(arbToStr(self))
 
 class unit:
         def __init__(self,value, unit):
@@ -29,18 +29,18 @@ class unit:
             self.unit = unit
 
 
-def arb_str(aki):
+def arbToStr(aki):
     if str(type(aki))== "<class '__main__.arb'>":
-        return "&a:"+arb_str(aki.a)+"&r:"+arb_str(aki.r)+"&b:"+arb_str(aki.b)
+        return "&a:" + arbToStr(aki.a) + "&r:" + arbToStr(aki.r) + "&b:" + arbToStr(aki.b)
 
     if str(type(aki)) == "<class 'str'>":
         return str(aki)
 
 
-def store_arb(data):
+def storeArb(data):
 
     if str(type(data)) =="<class 'str'>":
-        aki = str_arb(data)
+        aki = strToArb(data)
         str_data = data
         a = aki.a
         r = aki.r
@@ -51,10 +51,10 @@ def store_arb(data):
         ia = asi.a
         ir = asi.r
         ib = asi.b
-        inv_str_data = arb_str(asi)
+        inv_str_data = arbToStr(asi)
     elif "<class '__main__.arb'>":
         aki = data
-        str_data = arb_str(data)
+        str_data = arbToStr(data)
         a = aki.a
         r = aki.r
         b = aki.b
@@ -62,17 +62,17 @@ def store_arb(data):
         asi = aki
         asi.a, asi.b = asi.b, asi.a
         asi.r = '~' + asi.r
-        inv_str_data = arb_str(asi)
+        inv_str_data = arbToStr(asi)
         ia = asi.a
         ir = asi.r
         ib = asi.b
         #print(a)
-        if is_arb(a):
+        if isArb(a):
             #print(a)
-            store_arb(a)
-        if is_arb(b):
+            storeArb(a)
+        if isArb(b):
             #print(b)
-            store_arb(b)
+            storeArb(b)
 
 
     with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json") as f:
@@ -81,48 +81,48 @@ def store_arb(data):
         arb_data = json.load(f)
         #storing a
         try:
-            arb_data["a"][arb_str(a)].append(str_data)
+            arb_data["a"][arbToStr(a)].append(str_data)
         except:
-            arb_data["a"][arb_str(a)] = [str_data]
+            arb_data["a"][arbToStr(a)] = [str_data]
 
         #storing r
         try:
-            arb_data["r"][arb_str(r)].append(str_data)
+            arb_data["r"][arbToStr(r)].append(str_data)
         except:
-            arb_data["r"][arb_str(r)] = [str_data]
+            arb_data["r"][arbToStr(r)] = [str_data]
 
         #storing b
         try:
-            arb_data["b"][arb_str(b)].append(str_data)
+            arb_data["b"][arbToStr(b)].append(str_data)
         except:
-            arb_data["b"][arb_str(b)] = [str_data]
+            arb_data["b"][arbToStr(b)] = [str_data]
 
         #inverse relations
         #storing ia
         #print(ia,ir,ib)
         try:
-            arb_data["a"][arb_str(ia)].append(inv_str_data)
+            arb_data["a"][arbToStr(ia)].append(inv_str_data)
         except:
-            arb_data["a"][arb_str(ia)] = [inv_str_data]
+            arb_data["a"][arbToStr(ia)] = [inv_str_data]
 
         #storing r
         try:
-            arb_data["r"][arb_str(ir)].append(inv_str_data)
+            arb_data["r"][arbToStr(ir)].append(inv_str_data)
         except:
-            arb_data["r"][arb_str(ir)] = [inv_str_data]
+            arb_data["r"][arbToStr(ir)] = [inv_str_data]
 
         #storing b
         try:
-            arb_data["b"][arb_str(ib)].append(inv_str_data)
+            arb_data["b"][arbToStr(ib)].append(inv_str_data)
         except:
-            arb_data["b"][arb_str(ib)] = [inv_str_data]
+            arb_data["b"][arbToStr(ib)] = [inv_str_data]
 
     with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json",'w') as w:
         json.dump(arb_data,w)
 
 
-def str_arb(asi):
-    flag = is_arb(asi)
+def strToArb(asi):
+    flag = isArb(asi)
     asi = asi.replace(' ','')
     asi = asi.replace('&a:', ' &a: ')
     asi = asi.replace('&r:', ' &r: ')
@@ -130,15 +130,15 @@ def str_arb(asi):
                       )
     asi = asi.split()
     if flag:
-        return str_arb_sup(asi)
+        return strToArbSup(asi)
     else:
         if str(type(asi)=="<class 'list'>"):
-            return arr_str(asi)
+            return arrToStr(asi)
         else:
             return asi
 
 
-def str_arb_sup(lsi):
+def strToArbSup(lsi):
     mt = arb('','','')
     count_a = 0
     count_r = 0
@@ -166,29 +166,29 @@ def str_arb_sup(lsi):
          if flag_a:
              if flag_ott2:
                 if count_r-count_a ==0:
-                    mt.a = str_arb(arr_str(lsi[ia+1:i]))
+                    mt.a = strToArb(arrToStr(lsi[ia + 1:i]))
                     flag_r = True
                     ir=i
                     flag_ott2 = False
          if flag_r:
              if flag_ott3:
                 if count_b-count_r ==0:
-                     mt.r = str_arb(arr_str(lsi[ir+1:i]))
+                     mt.r = strToArb(arrToStr(lsi[ir + 1:i]))
                      ib = i
                      flag_b = True
                      flag_ott3 = False
 
          if flag_b:
-            mt.b = str_arb(arr_str(lsi[ib+1:]))
+            mt.b = strToArb(arrToStr(lsi[ib + 1:]))
             flag_b = False
     return mt
 
 
-def arr_str(arr):
+def arrToStr(arr):
     return ' '.join([str(elem) for elem in arr])
 
 
-def is_arb(aki):
+def isArb(aki):
     if str(type(aki)) == "<class '__main__.arb'>":
         return True
     else:
@@ -208,8 +208,8 @@ def communicate(sen):
     if sen.startswith('&fact:'):
         sen = sen.replace(' ','')
         sen = sen.replace('&fact:','')
-        if is_arb(sen):
-            store_arb(sen)
+        if isArb(sen):
+            storeArb(sen)
 
 def arbDisplay(arr):
     for _,item in enumerate(arr):
@@ -240,9 +240,9 @@ def retrive(a="_",r="_",b="_"):
         else:
             bl = data["b"][b]
 
-        al = retrive_sup(al)
-        rl = retrive_sup(rl)
-        bl = retrive_sup(bl)
+        al = retriveSup(al)
+        rl = retriveSup(rl)
+        bl = retriveSup(bl)
 
         #print("al",al)
         #print("rl",rl)
@@ -257,7 +257,7 @@ def memArbClear():
     with open("jsonFiles/memory_arb.json",'w') as w:
         json.dump(cdata,w)
 
-def retrive_sup(aki):
+def retriveSup(aki):
     if str(type(aki))=="<class 'list'>":
         return aki
 
@@ -301,7 +301,7 @@ def InfoTranslate(arb):
     returns: data(list)
 
     """
-    arb = str_arb(arb)
+    arb = strToArb(arb)
     a = arb.a
     r = arb.r
     b = arb.b
@@ -322,9 +322,9 @@ def InfoTranslate(arb):
 
 if __name__ == "__main__":
     a = arb(arb('akash','love','saka'),'parent','dio')
-    strr = arb_str(a)
+    strr = arbToStr(a)
     b = arb('akash','love','void')
-    store_arb(b)
-    v = str_arb(strr)
+    storeArb(b)
+    v = strToArb(strr)
     retrive(a = "akash",r = "love")
 
