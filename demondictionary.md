@@ -23,3 +23,7 @@ functions:
 11. **InfoTranslate**( arb ) [ data ] { translates the given arb to the predefined data ` from the data used to define the relation }
 12. 
 
+###ARU
+
+functions:
+1. 
