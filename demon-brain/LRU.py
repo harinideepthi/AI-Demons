@@ -97,7 +97,7 @@ def storeArb(data):
             storeArb(b)
 
 
-    with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json") as f:
+    with open("jsonFiles/memory_arb.json") as f:
 
 
         arb_data = json.load(f)
@@ -139,7 +139,7 @@ def storeArb(data):
         except:
             arb_data["b"][arbToStr(ib)] = [inv_str_data]
 
-    with open("C:\\Users\\akash\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json",'w') as w:
+    with open("jsonFiles/memory_arb.json",'w') as w:
         json.dump(arb_data,w)
 
 
@@ -304,7 +304,7 @@ def retrive(a="_",r="_",b="_"):
 
     """
 
-    with open("C:\\Users\\akash\\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json") as f:
+    with open("jsonFiles/memory_arb.json") as f:
         data = json.load(f)
         #a
         if a == "_":
@@ -395,7 +395,7 @@ def DefineRelation(relation, sen):
     with open('jsonFiles/mem_rdef.json','w') as w:
         json.dump(data,w)
 
-def InfoTranslate(arb):
+def infoTranslate(arb):
     """
 
     param: sen(str)
@@ -419,6 +419,14 @@ def InfoTranslate(arb):
 
     return data
 
+#logical relation formula
+def storeLRF(lrf):
+    with open('jsonFiles/mem_lrf.json') as f:
+        data = json.load(f)
+
+
+def solveLogicalRelation(str):
+    print(str)
 
 
 if __name__ == "__main__":

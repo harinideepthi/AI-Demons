@@ -39,7 +39,7 @@ def actionExtractor(aan):
     """
 
 
-    with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\action_dict.json') as f:
+    with open('jsonFiles/action_dict.json') as f:
         data = json.load(f)
         act = action(data[aan]["tag_matrix"],matrixToDs(data[aan]["driverState"]),matrixToDs(data[aan]["obs_pm"]),aan,data[aan]["mi_list"])
 
@@ -54,7 +54,7 @@ def objectExtractor(word):
      returns: object object
 
      """
-    with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\object_dict.json") as f:
+    with open("jsonFiles/object_dict.json") as f:
         data = json.load(f)
         propertyDriver=[]
         valueDriver = driverState(data[word]["driver"][0], data[word]["driver"][1], data[word]["driver"][2],
@@ -142,7 +142,7 @@ def objectCombine(aon):
         describer[i] = describer[i].replace(" ", '')
     if len(describer) > 1:
         describer = describer[1].split(sep= ',')
-        with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\describer.json') as f:
+        with open('jsonFiles/describer.json') as f:
             data = json.load(f)
             for i in range(len(describer)):
                 tags_.append(data[int(describer[i])])
@@ -265,7 +265,7 @@ def store(o,d=None,p=None,a=None):
 
   """
   #opening the json file
-  with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\memory_asi.json') as f:
+  with open('jsonFiles/memory_asi.json') as f:
         m = json.load(f)
   #doin shit
   try:
@@ -326,7 +326,7 @@ def store(o,d=None,p=None,a=None):
                   m[a][o]["property"][p] = [time.time()]
 
   #storing back
-  with open('C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\memory_asi.json', 'w') as j:
+  with open('jsonFiles/memory_asi.json', 'w') as j:
       json.dump(m, j, indent=4)
 
 
@@ -380,10 +380,10 @@ def delete(simobj):
 
     """
 
-    with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\worldData.json") as f:
+    with open("jsonFiles/worldData.json") as f:
         wdata = json.load(f)
         wdata[simobj.chunk_no].pop(simobj.chunk_index)
-    with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\worldData.json","w") as j:
+    with open("jsonFiles/worldData.json","w") as j:
         json.dump(wdata,j)
 
 def tlo(o,d=None,p=None,a=None,tloThres=40000012):
@@ -395,7 +395,7 @@ def tlo(o,d=None,p=None,a=None,tloThres=40000012):
     """
 
     ct = time.time()
-    with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\memory_asi.json") as f:
+    with open("jsonFiles/memory_asi.json") as f:
         mdata = json.load(f)
         tlodat=[]
         tlodat.append(mdata["kaerve"][o]['self'])
@@ -426,7 +426,7 @@ def perform(a,o=None):
         0th bit: delete pin
 
     """
-    with open("C:\\Users\\akash\\PycharmProjects\\Demon\'s paradise\\demon-brain\\jsonFiles\\pinstrunctions.json") as f :
+    with open("jsonFiles/pinstrunctions.json") as f :
         pins=json.load(f)
         pinstruction = pins[a]
         print(pinstruction)
