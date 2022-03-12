@@ -9,6 +9,8 @@ class:
 2. unit
 3. formula
 4. unit
+
+
 ###Functions.py
 1. **derites** ( driver, value ), [ value ], converts driver values into derites using their corresponding pdex values
 2. **actionExtractor** ( aan ), [ act ] , converts a string into corresponding action class.
