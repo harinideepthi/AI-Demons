@@ -24,12 +24,26 @@ class arb:
         print(arbToStr(self))
 
 class unit:
+        """
+
+        value
+        unit
+
+        """
+
         def __init__(self,value, unit):
             self.value = value
             self.unit = unit
 
 
 def arbToStr(aki):
+    """
+
+    parameter: aki
+    description: converts an arb class to a string class
+    returns: asi
+
+    """
     if str(type(aki))== "<class '__main__.arb'>":
         return "&a:" + arbToStr(aki.a) + "&r:" + arbToStr(aki.r) + "&b:" + arbToStr(aki.b)
 
@@ -38,6 +52,14 @@ def arbToStr(aki):
 
 
 def storeArb(data):
+
+    """
+
+    parameters: data
+    description: stores arb in json file
+    returns:
+
+    """
 
     if str(type(data)) =="<class 'str'>":
         aki = strToArb(data)
@@ -122,6 +144,15 @@ def storeArb(data):
 
 
 def strToArb(asi):
+
+    """
+
+    parameters: asi
+    description: converts string to arb class if it is a convertabel
+    returns: lsi
+
+    """
+
     flag = isArb(asi)
     asi = asi.replace(' ','')
     asi = asi.replace('&a:', ' &a: ')
@@ -139,6 +170,13 @@ def strToArb(asi):
 
 
 def strToArbSup(lsi):
+
+    """
+
+    support function for strToArb function
+
+    """
+
     mt = arb('','','')
     count_a = 0
     count_r = 0
@@ -185,16 +223,42 @@ def strToArbSup(lsi):
 
 
 def arrToStr(arr):
+
+    """
+
+    parameters: arr
+    description: converts array to string
+    returns: str
+
+    """
     return ' '.join([str(elem) for elem in arr])
 
 
 def isArb(aki):
+
+    """
+
+    parameters: aki
+    description: checks if the give input is arb class or arb convertable
+    returns: bool
+
+    """
+
     if str(type(aki)) == "<class '__main__.arb'>":
         return True
     else:
         return "&a:" in aki and "&r:" in aki and "&b:" in aki
 
 def communicate(sen):
+
+    """
+
+    parameters: sen
+    description: communicates with the AI / demon
+    returns: NULL
+
+    """
+
     if  sen.startswith('&qn:'):
         nen = sen
         nen = nen.replace('&qn:','')
@@ -212,6 +276,15 @@ def communicate(sen):
             storeArb(sen)
 
 def arbDisplay(arr):
+
+    """
+
+    parameters: arr
+    description: displays the arb to aprropriate sentence
+    returns: NULL
+
+    """
+
     for _,item in enumerate(arr):
         item = item.replace(' ' ,'')
         item = item.replace('&a:', ' ')
@@ -222,6 +295,15 @@ def arbDisplay(arr):
 
 
 def retrive(a="_",r="_",b="_"):
+
+    """
+
+    parameters: a,r,b
+    description: retrive the data stored from memory by the specific
+    returns: final_list
+
+    """
+
     with open("C:\\Users\\akash\\PycharmProjects\\Demon's paradise\\demon-brain\\jsonFiles\\memory_arb.json") as f:
         data = json.load(f)
         #a
@@ -253,11 +335,24 @@ def retrive(a="_",r="_",b="_"):
         return final_list
 
 def memArbClear():
+
+    """
+
+    description: clears / resets memory_arb with default parameters
+
+    """
+
     cdata = {"a": {}, "r": {}, "b": {}}
     with open("jsonFiles/memory_arb.json",'w') as w:
         json.dump(cdata,w)
 
 def retriveSup(aki):
+
+    """
+
+    support function to retrive function
+
+    """
     if str(type(aki))=="<class 'list'>":
         return aki
 
@@ -269,6 +364,13 @@ def retriveSup(aki):
         return asi
 
 def cTerminal():
+
+    """
+
+    description: starts a communication terminal for us to communicate
+
+    """
+
     flagcli = True
     while flagcli:
         cmd = str(input ('>>>'))
@@ -316,7 +418,6 @@ def InfoTranslate(arb):
         data[i] = item.replace('#b',b)
 
     return data
-
 
 
 
