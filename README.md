@@ -1,1 +1,1 @@
-#hello
+Goal:To create AI that can think, reason and decision make using emotions
