@@ -21,9 +21,10 @@ functions:
 9. **memArbClear**() [ ] { clears the memory }
 10. **DefineRelation**( relation, sen ) { stores the relation definintion into memory }
 11. **InfoTranslate**( arb ) [ data ] { translates the given arb to the predefined data ` from the data used to define the relation }
-12. 
+
 
 ###ARU
-
+class:
+1. formula
+2. unit
 functions:
-1. 

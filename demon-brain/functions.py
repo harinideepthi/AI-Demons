@@ -543,9 +543,3 @@ def excecute(input,instruction=None):
                 input=output
 
     return output
-
-
-
-
-
-#fuck u akash for making this shit and thanks for nothing nobody understood any fuking thing
