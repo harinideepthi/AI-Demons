@@ -28,11 +28,11 @@ class:
 16. **tlo**
 17. **excecute** ( input, instruction = None ), [ output ] , executes a task with given instruction
 ###LRU:
-18. **arb_str**( aki ), [ asi ],converts arb to string }
-19. **store_arb**( data ), [ ] { stores arb data into memory }
-20. **str_arb**( aki ), [ asi ], { converts a string to arb class}
-21. **str_arb_sup** { supporting function to stri_arb() }
-22. **is_arb**( aki ) [ bool ] { checks if a given sting is a arb or a arb convertable }
+18. **arbStr**( aki ), [ asi ],converts arb to string }
+19. **storeArb**( data ), [ ] { stores arb data into memory }
+20. **strArb**( aki ), [ asi ], { converts a string to arb class}
+21. **strArbSup** { supporting function to stri_arb() }
+22. **isArb**( aki ) [ bool ] { checks if a given sting is a arb or a arb convertable }
 23. **communicate**(sen)
 24. **arbDisplay**(str) { displays a arb like a normal sentence }
 25. **retrive**( a, r, b) [ final_list ] { retrives a list from memory that matches the inputted arb }
@@ -40,5 +40,5 @@ class:
 27. **DefineRelation**( relation, sen ) { stores the relation definintion into memory }
 28. **InfoTranslate**( arb ) [ data ] { translates the given arb to the predefined data ` from the data used to define the relation }
 ###ARU
-29. **find_roots**( x, y ), [ list ] , used to find roots when u give x and y
+29. **findRoots**( x, y ), [ list ] , used to find roots when u give x and y
 30. **generate** ( signal, variable, lower_limit, upperlimit, sampling_rate = 10 ), [ x, y ] , generates a signal with a given signal 

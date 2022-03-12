@@ -42,7 +42,7 @@ class formula:
 
         print('fdkj')
 
-def find_roots(x,y):
+def findRoots(x, y):
     s = np.abs(np.diff(np.sign(y))).astype(bool)
     return x[:-1][s] + np.diff(x)[s]/(np.abs(y[1:][s]/y[:-1][s])+1)
 
@@ -65,9 +65,9 @@ if __name__ == '__main__':
     x,y = generate('x**2-2*x+4','x',-20,20,10)
     print(x,y)
     #print(y)
-    z = find_roots(x,y)
+    z = findRoots(x, y)
     plt.show(x,y)
     plt.show()
 
 
-    find_roots(x,y)
+    findRoots(x, y)
