@@ -243,7 +243,7 @@ def makeDec(dec):
 
   description: makes decision from list of decisions
   parameters: dec(list). list of decisions
-  reuturns: final decision (class: decision)
+  returns: final decision (class: decision)
 
    """
   decision_index=0
