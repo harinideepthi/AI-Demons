@@ -15,7 +15,7 @@ class:
 
 <h3>Functions.py</h3>
 <ol>
-<li><b>derites</b> ( driver, value ) &rarr; [ value ]<br> # converts driver values into derites using their corresponding pdex values <br>
+<li><b>derites</b> ( driver, value ) &rarr; [ value ]<br> <b>#dfd</b> converts driver values into derites using their corresponding pdex values <br>
 2. <b>actionExtractor</b> ( aan ), [ act ] , converts a string into corresponding action class. <br>
 3. <b>objectExtractor</b> ( word ), [ obj ] , converts a string into its corresponding object class.<br>
 4. <b>tagMatch</b> ( act, obj ), [ list ], checks what are the tags which matches between action and object<br>
