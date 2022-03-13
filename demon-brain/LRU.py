@@ -51,7 +51,7 @@ def arbToStr(aki):
         return str(aki)
 
 
-def storeArb(data):
+def storeArb(data, location = "Memory/mem_arb.json"):
 
     """
 
@@ -97,7 +97,7 @@ def storeArb(data):
             storeArb(b)
 
 
-    with open("jsonFiles/memory_arb.json") as f:
+    with open(location) as f:
 
 
         arb_data = json.load(f)
@@ -139,7 +139,7 @@ def storeArb(data):
         except:
             arb_data["b"][arbToStr(ib)] = [inv_str_data]
 
-    with open("jsonFiles/memory_arb.json",'w') as w:
+    with open(location,'w') as w:
         json.dump(arb_data,w)
 
 
@@ -304,7 +304,7 @@ def retrive(a="_",r="_",b="_"):
 
     """
 
-    with open("jsonFiles/memory_arb.json") as f:
+    with open("Memory/mem_arb.json") as f:
         data = json.load(f)
         #a
         if a == "_":
@@ -343,7 +343,7 @@ def memArbClear():
     """
 
     cdata = {"a": {}, "r": {}, "b": {}}
-    with open("jsonFiles/memory_arb.json",'w') as w:
+    with open("Memory/mem_arb.json", 'w') as w:
         json.dump(cdata,w)
 
 def retriveSup(aki):
@@ -386,13 +386,13 @@ def DefineRelation(relation, sen):
     description: defines a relation making it easier to retrive information from a sentence
 
     """
-    with open('jsonFiles/mem_rdef.json') as f:
+    with open('Memory/mem_rdef.json') as f:
         data = json.load(f)
         try:
             data["relation"][relation].append(sen)
         except:
             data["relation"][relation] = [sen]
-    with open('jsonFiles/mem_rdef.json','w') as w:
+    with open('Memory/mem_rdef.json', 'w') as w:
         json.dump(data,w)
 
 def infoTranslate(arb):
@@ -409,7 +409,7 @@ def infoTranslate(arb):
     b = arb.b
 
 
-    with open('jsonFiles/mem_rdef.json') as f:
+    with open('Memory/mem_rdef.json') as f:
         data = json.load(f)
     data = data['relation'] [r]
     for i,item in enumerate(data):
@@ -421,7 +421,7 @@ def infoTranslate(arb):
 
 #logical relation formula
 def storeLRF(lrf):
-    with open('jsonFiles/mem_lrf.json') as f:
+    with open('Memory/mem_lrf.json') as f:
         data = json.load(f)
 
 

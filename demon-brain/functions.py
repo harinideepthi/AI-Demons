@@ -265,7 +265,7 @@ def store(o,d=None,p=None,a=None):
 
   """
   #opening the json file
-  with open('jsonFiles/memory_asi.json') as f:
+  with open('Memory/mem_asi.json') as f:
         m = json.load(f)
   #doin shit
   try:
@@ -326,7 +326,7 @@ def store(o,d=None,p=None,a=None):
                   m[a][o]["property"][p] = [time.time()]
 
   #storing back
-  with open('jsonFiles/memory_asi.json', 'w') as j:
+  with open('Memory/mem_asi.json', 'w') as j:
       json.dump(m, j, indent=4)
 
 
@@ -395,7 +395,7 @@ def tlo(o,d=None,p=None,a=None,tloThres=40000012):
     """
 
     ct = time.time()
-    with open("jsonFiles/memory_asi.json") as f:
+    with open("Memory/mem_asi.json") as f:
         mdata = json.load(f)
         tlodat=[]
         tlodat.append(mdata["kaerve"][o]['self'])

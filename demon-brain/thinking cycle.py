@@ -20,7 +20,7 @@ while Flag_k:
     do=[]
     while clock(st)<thinking_span:
         time.sleep(0.00008)
-        with open('jsonFiles/memory_aki.json') as f:
+        with open('Memory/mem_aki.json') as f:
             data = json.load(f)
             bla.append(data[0][random.randint(0,len(data[0])-1)])
         for i in range(len(bla)):
@@ -34,7 +34,7 @@ while Flag_k:
     while clock(stt)<thinking_span:
 
         time.sleep(0.00008)
-        with open('jsonFiles/memory_aki.json') as f:
+        with open('Memory/mem_aki.json') as f:
             data = json.load(f)
             alb.append(data[1][random.randint(0, len(data[1]) - 1)])
         for i in range(len(alb)):
