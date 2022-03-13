@@ -14,7 +14,8 @@ class:
 
 
 <h3>Functions.py</h3>
-1. <b>derites</b> ( driver, value ), [ value ], converts driver values into derites using their corresponding pdex values <br>
+<ol>
+<li><b>derites</b> ( driver, value ) &rarr; [ value ]<br>descriptiion:  converts driver values into derites using their corresponding pdex values <br>
 2. <b>actionExtractor</b> ( aan ), [ act ] , converts a string into corresponding action class. <br>
 3. <b>objectExtractor</b> ( word ), [ obj ] , converts a string into its corresponding object class.<br>
 4. <b>tagMatch</b> ( act, obj ), [ list ], checks what are the tags which matches between action and object<br>
@@ -31,7 +32,7 @@ class:
 15. <b>delete</b> ( simobj ), [ NULL ] , deletes a simulation object from simulation world file<br>
 16. <b>tlo</b><br>
 17. <b>excecute</b> ( input, instruction = None ), [ output ] , executes a task with given instruction<br>
-<h3>LRU</h3>:<br>
+<h3>LRU:</h3><br>
 18. <b>arbStr</b>( aki ), [ asi ],converts arb to string }<br>
 19. <b>storeArb</b>( data ), [ ] { stores arb data into memory }<br>
 20. <b>strArb</b>( aki ), [ asi ], { converts a string to arb class}<br>
