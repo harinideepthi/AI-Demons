@@ -429,11 +429,16 @@ def solveLogicalRelation(str):
     print(str)
 
 
-if __name__ == "__main__":
-    a = arb(arb('akash','love','saka'),'parent','dio')
-    strr = arbToStr(a)
-    b = arb('akash','love','void')
-    storeArb(b)
-    v = strToArb(strr)
-    retrive(a = "akash",r = "love")
 
+
+
+
+
+if __name__ == "__main__":
+    # a = arb(arb('akash','love','saka'),'parent','dio')
+    # strr = arbToStr(a)
+    # b = arb('akash','love','void')
+    # storeArb(b)
+    # v = strToArb(strr)
+    # retrive(a = "akash",r = "love")
+    pass

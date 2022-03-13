@@ -1,14 +1,16 @@
-#Demon's Dictionary
-### brackets:
-**()** - Parameters \
-**[]** - Returns \
-**{}** - Description
-##Demon Brain:
+<h1 align = center>Demon's Dictionary</h1>
+
+<h3> brackets: </h3>
+
+<b>()</b> - Parameters <br>
+<b>[]</b> - Returns <br>
+<b>{}</b> - Description
+<h2>Demon Brain:</h2>
 class:
 1. arb
 2. unit
 3. formula
-4. unit
+4. unit 
 
 
 ###Functions.py
